@@ -12,5 +12,7 @@ namespace Domain
 
         public const string QueueName = "Rabbit";
 
+        public const string ExchangeName = "Messages";
+
     }
 }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RabbitMQ.Client;
-using Domain;
-using Domain.Models;
-using RabbitMQ.Client.Events;
+﻿using Domain;
 using Domain.Extensions;
+using Domain.Models;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System;
 
 namespace Consumer
 {
@@ -34,6 +30,12 @@ namespace Consumer
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Gets the factory.
+        /// </summary>
+        /// <value>
+        /// The factory.
+        /// </value>
         public ConnectionFactory Factory
         {
             get
@@ -42,16 +44,30 @@ namespace Consumer
             }
         }
 
+        /// <summary>
+        /// Runs the specified arguments.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         public void Run(string[] args)
         {
             using (var connection = this.Factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: Constants.QueueName,
-                    durable: true,
-                    exclusive: false,
-                    autoDelete: false,
-                    arguments: null);
+                //// for Work Queues pattern
+                //channel.QueueDeclare(queue: Constants.QueueName,
+                //    durable: true,
+                //    exclusive: false,
+                //    autoDelete: false,
+                //    arguments: null);
+
+                //// for Publish/Subscribe pattern
+                channel.ExchangeDeclare(exchange: Constants.ExchangeName, type: "fanout");
+                ////non-durable, exclusive, autodelete queue with a generated name
+                var queueName = channel.QueueDeclare().QueueName;
+                ////relationship between exchange and a queue
+                channel.QueueBind(queue: queueName,
+                                  exchange: Constants.ExchangeName,
+                                  routingKey: "");
 
                 channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
 
@@ -61,14 +77,21 @@ namespace Consumer
                     var data = basicDeliver.Body.FromByteArray<Message>();
                     Console.WriteLine($"Id = {data.Id}, Moment = {data.Moment.ToString("o")}, TextLength = {data.TextLength}, Text = {data.Text}");
 
-                    channel.BasicAck(deliveryTag: basicDeliver.DeliveryTag, multiple: false);
+                    //// for Work Queues pattern
+                    //channel.BasicAck(deliveryTag: basicDeliver.DeliveryTag, multiple: false);
                 };
 
                 while (true)
                 {
-                    channel.BasicConsume(queue: Constants.QueueName,
-                        autoAck: false,
-                        consumer: consumer);
+                    //// for Work Queues pattern
+                    //channel.BasicConsume(queue: Constants.QueueName,
+                    //    autoAck: false,
+                    //    consumer: consumer);
+
+                    //// for Publish/Subscribe pattern
+                    channel.BasicConsume(queue: queueName,
+                                 autoAck: true,
+                                 consumer: consumer);
                 }
             }
         }

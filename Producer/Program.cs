@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RabbitMQ.Client;
-using Domain.Models;
-using Newtonsoft.Json;
-using Domain;
+﻿using Domain;
 using Domain.Extensions;
+using Domain.Models;
+using RabbitMQ.Client;
+using System;
 
 namespace Producer
 {
@@ -34,6 +29,12 @@ namespace Producer
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Gets the factory.
+        /// </summary>
+        /// <value>
+        /// The factory.
+        /// </value>
         public ConnectionFactory Factory
         {
             get
@@ -42,16 +43,24 @@ namespace Producer
             }
         }
 
+        /// <summary>
+        /// Runs the specified arguments.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         public void Run(string[] args)
         {
             using (var connection = this.Factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: Constants.QueueName,
-                    durable: true,
-                    exclusive: false,
-                    autoDelete: false,
-                    arguments: null);
+                //// for Work Queues pattern
+                //channel.QueueDeclare(queue: Constants.QueueName,
+                //    durable: true,
+                //    exclusive: false,
+                //    autoDelete: false,
+                //    arguments: null);
+
+                //// for Publish/Subscribe pattern
+                channel.ExchangeDeclare(exchange: Constants.ExchangeName, type: "fanout");
 
                 var properties = channel.CreateBasicProperties();
                 properties.Persistent = true;
@@ -64,10 +73,17 @@ namespace Producer
                         return;
                     }
 
-                    channel.BasicPublish(exchange: "",
-                        routingKey: Constants.QueueName,
-                        basicProperties: properties,
-                        body: message.ToByteArray());
+                    //// for Work Queues pattern
+                    //channel.BasicPublish(exchange: "",
+                    //    routingKey: Constants.QueueName,
+                    //    basicProperties: properties,
+                    //    body: message.ToByteArray());
+
+                    //// for Publish/Subscribe pattern
+                    channel.BasicPublish(exchange: Constants.ExchangeName,
+                                 routingKey: "",
+                                 basicProperties: null,
+                                 body: message.ToByteArray());
                 }
             }
         }
