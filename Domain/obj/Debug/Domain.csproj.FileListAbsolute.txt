@@ -1,0 +1,8 @@
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Domain\bin\Debug\Domain.dll
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Domain\bin\Debug\Domain.pdb
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Domain\obj\Debug\Domain.dll
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Domain\obj\Debug\Domain.pdb
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Domain\bin\Debug\Domain.XML
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Domain\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Domain\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Producer</name>
+    </assembly>
+    <members>
+        <member name="M:Producer.Program.Main(System.String[])">
+            <summary>
+            Mains the specified arguments.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+    </members>
+</doc>

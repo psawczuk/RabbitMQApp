@@ -1,0 +1,16 @@
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\obj\Debug\Consumer.csprojResolveAssemblyReference.cache
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Consumer.exe.config
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Consumer.exe
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Consumer.pdb
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Domain.dll
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\RabbitMQ.Client.dll
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Domain.pdb
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\RabbitMQ.Client.xml
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\obj\Debug\Consumer.exe
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\obj\Debug\Consumer.pdb
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Consumer.XML
+C:\Users\Paweł\documents\visual studio 2015\Projects\RabbitMQApp\Consumer\bin\Debug\Domain.xml
